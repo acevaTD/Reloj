@@ -116,7 +116,7 @@ class Tiempo:
 
     def Str(self): # EL zfill permite poner ceros a la izquierda para que hayan dos dígitos.
 
-        cad = "La hora es: " + str(self.__hora).zfill(2) + ":" + str(self.__minuto).zfill(2) + ":" + str(self.__segundo).zfill(2) + ":" + str(self.__milisegundo).zfill(2)
+        cad = "La hora es: " + str(self.__hora).zfill(2) + ":" + str(self.__minuto).zfill(2) + ":" + str(self.__segundo).zfill(2) + ":" + str(self.__milisegundo).zfill(3)
 
         return cad                  
 
