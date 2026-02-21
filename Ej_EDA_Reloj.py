@@ -114,16 +114,33 @@ class Tiempo:
     
         return milisegundos
 
-    def Str(self):
+    def Str(self): # EL zfill permite poner ceros a la izquierda para que hayan dos dígitos.
 
         cad = "La hora es: " + str(self.__hora).zfill(2) + ":" + str(self.__minuto).zfill(2) + ":" + str(self.__segundo).zfill(2) + ":" + str(self.__milisegundo).zfill(2)
 
         return cad                  
 
 
-f = Tiempo()
 
-f.SetTiempo(23,59,59,100)
-f.IncrMinuto()
-cad = f.Str()
-print(cad)
+def main():
+
+    
+    lista_r = []
+    for i in range(3):
+
+        tiempo = Tiempo()
+        lista_r.append(tiempo)
+
+    lista_r[0].SetTiempo(12,0, 56, 820)
+    lista_r[1].SetTiempo(3,45,12,0)
+    lista_r[2].SetTiempo(23,59,59,125)
+
+    elem_0 = lista_r[0].Str()
+    print(elem_0)
+
+    for i in range(5):
+        lista_r[1].DecrMinuto()
+
+
+if __name__ == "__main__":
+    main()
