@@ -39,7 +39,7 @@ class Tiempo:
 
         valido = bool()
 
-        if h >= 0 and h <= 24:
+        if h >= 0 and h < 24:
             if m >= 0 and m < 60 and s >= 0 and s < 60:
                 if ms >= 0 and ms < 1000:
                     valido = True
@@ -79,6 +79,51 @@ class Tiempo:
                 
 
         return
-                    
 
-print("hello world")
+    
+    def DecrMinuto(self):
+
+        if self.__minuto != 0:
+            self.__minuto -= 1
+
+        else:
+            self.__minuto = 59
+            if self.__hora == 0:
+                self.__hora = 23
+            else:
+                self.__hora -= 1
+
+        return
+    
+
+    def GetHora(self):
+
+        return self.__hora
+    
+    def GetMinutos(self):
+
+        return self.__minuto
+    
+    def GetSegundos(self):
+
+        return self.__segundo
+    
+    def ToMilisegundos(self):
+
+        milisegundos = self.__hora * 60 * 60 * 1000 + self.__minuto * 60 * 1000 + self.__segundo * 1000 + self.__milisegundo
+    
+        return milisegundos
+
+    def Str(self):
+
+        cad = "La hora es: " + str(self.__hora).zfill(2) + ":" + str(self.__minuto).zfill(2) + ":" + str(self.__segundo).zfill(2) + ":" + str(self.__milisegundo).zfill(2)
+
+        return cad                  
+
+
+f = Tiempo()
+
+f.SetTiempo(23,59,59,100)
+f.IncrMinuto()
+cad = f.Str()
+print(cad)
