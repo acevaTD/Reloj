@@ -35,36 +35,50 @@ class Tiempo:
         return
     
     
+    def __TiempoValido(h: int, m: int, s: int, ms: int) -> bool:
+
+        valido = bool()
+
+        if h >= 0 and h <= 24:
+            if m >= 0 and m < 60 and s >= 0 and s < 60:
+                if ms >= 0 and ms < 1000:
+                    valido = True
+                else:
+                    valido = False
+            else:
+                valido = False
+        else:
+            valido = False
+
+        return valido
+    
+    
     def SetTiempo(self, h: int, m: int, s: int, ms: int):
-        
-        self.__hora = h
-        self.__minuto = m
-        self.__segundo = s
-        self.__milisegundo = ms
+
+        if Tiempo.__TiempoValido(h,m,s,ms):
+
+            self.__hora = h
+            self.__minuto = m
+            self.__segundo = s
+            self.__milisegundo = ms
         
         return
     
 
     def IncrMinuto(self):
         
-        if self.__milisegundo != 999:    
-            self.__milisegundo += 1
-        
+        if self.__minuto != 59:
+            self.__minuto += 1
+
         else:
-            
-            self.__milisegundo = 0
-            
-            if self.__segundo != 59:                
-                self.__segundo += 1
-                
+            self.__minuto = 0
+            if self.__hora == 23:
+                self.__hora = 0
             else:
-                self.__segundo = 0
+                self.__hora += 1
                 
-                if self.__hora != 23:
-                    self.__hora += 1
-                    
-                else:
-                    self.__hora = 0
+
+        return
                     
 
 print("hello world")
